@@ -5,7 +5,7 @@
 # Reference: https://docs.k3s.io/quick-start
 #
 # Usage:
-#   K3S_URL=https://<server-ip>:6443 K3S_TOKEN=<token> ./02-k3s-agent-install.sh
+#   K3S_URL=https://<server-ip>:6443 K3S_TOKEN=<token> ./install-k3s-agent.sh
 #
 # K3S_TOKEN can be obtained on the server node via:
 #   sudo cat /var/lib/rancher/k3s/server/node-token

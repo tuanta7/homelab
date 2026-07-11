@@ -1,23 +1,22 @@
 #!/usr/bin/env bash
 #
-# Install K3s and bootstrap a single-node cluster
-# as the first control-plane node.
+# Install K3s and bootstrap a single-node cluster as the first control-plane node.
 #
 # Reference: https://docs.k3s.io/quick-start
 #
-# To join additional nodes as agents, see 02-k3s-agent-install.sh.
+# To join additional nodes as agents, see install-k3s-agent.sh.
 
 set -euo pipefail
 
 log() { 
-  echo "[01-k3s-server-install] $*"; 
+  echo "[install-k3s-server] $*"; 
 }
 
 print_agent_join_info() {
   local ip
   ip="$(hostname -I | awk '{print $1}')"
-  log "To join an agent node, run on the agent host (see 02-k3s-agent-install.sh):"
-  echo "  K3S_URL=https://${ip}:6443 K3S_TOKEN=$(sudo cat /var/lib/rancher/k3s/server/node-token) ./02-k3s-agent-install.sh"
+  log "To join an agent node, run on the agent host (see install-k3s-agent.sh):"
+  echo " make install-k3s-agent URL=https://${ip}:6443 TOKEN=$(sudo cat /var/lib/rancher/k3s/server/node-token)"
 }
 
 if command -v k3s >/dev/null 2>&1; then
