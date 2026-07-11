@@ -8,6 +8,13 @@ Specifications: Apple Mac Mini M1 2020
 - 8 CPU - 8GPU
 - 8GB RAM - 512 GB SSD
 - OS: macOS Monterey
+- Local Static IP: 192.168.1.37/24
+- Remote Login enabled
+
+```sh
+ssh tuanta7@192.168.1.37
+git clone https://github.com/tuanta7/homelab.git
+```
 
 All infrastructure is hosted on Ubuntu Server 24.04 LTS within a Multipass virtual machine.
 

@@ -5,14 +5,11 @@ install-multipass-macos:
 	sudo installer -pkg multipass.pkg -target /
 	rm multipass.pkg
 
-install-brew-linux:
-	./install-brew-linux.sh
-
 chmod-scripts:
 	sudo chmod -R +x scripts
 
-# -------------------------- #
-# Run on Multipass instances #
+install-brew-linux:
+	./install-brew-linux.sh
 
 install-k3s-server:
 	./scripts/install-k3s-server.sh
