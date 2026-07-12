@@ -3,7 +3,6 @@
 # Install Argo CD into the cluster (argocd namespace).
 #
 # Reference: https://argo-cd.readthedocs.io/en/stable/getting_started/
-# Notes: docs/argocd/argocd.md
 
 set -euo pipefail
 

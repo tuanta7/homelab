@@ -8,6 +8,12 @@ install-multipass-macos:
 chmod-scripts:
 	sudo chmod -R +x scripts
 
+install-helm:
+	./scripts/tools/install-helm.sh
+
+install-go-linux:
+	GO_VERSION=$(VERSION) ./scripts/tools/install-go-linux.sh
+
 install-brew-linux:
 	./install-brew-linux.sh
 
@@ -18,10 +24,10 @@ install-k3s-agent:
 	K3S_URL=$(URL) K3S_TOKEN=$(TOKEN) ./scripts/install-k3s-agent.sh
 
 install-argocd:
-	./scripts/install-argocd.sh
+	./scripts/argocd/install.sh
 
 setup-namespaces:
-	./scripts/setup-namespaces.sh
+	./scripts/argocd/setup-namespaces.sh
 
 get-argocd-admin-password:
 	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
