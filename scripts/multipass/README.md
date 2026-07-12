@@ -20,6 +20,13 @@ ping -D -s 1480 google.com
 sudo ifconfig eth0 mtu 1450
 ```
 
+```sh
+multipass exec k3s-server -- sudo apt install net-tools
+multipass exec k3s-server -- ifconfig
+multipass exec k3s-server -- sudo ifconfig eth0 mtu 1450
+multipass exec k3s-server -- ping -D -s 1480 google.com
+```
+
 ## Instance Lifecycle Management (Clean State)
 
 The following commands are used to inspect, remove, and permanently purge Multipass instances in order to maintain a clean and reproducible server environment.
@@ -53,10 +60,10 @@ multipass get local.bridged-network
 multipass set local.bridged-network=en1
 
 # Launch an Ubuntu Server instance with bridged networking enabled
-multipass launch --name server --bridged
+multipass launch 24.04 --name k3s-server --bridged --cpus 1 --memory 1G --disk 20G
 
 # Access server instance
-multipass shell server
+multipass shell k3s-server
 ```
 
 ```sh
@@ -64,9 +71,9 @@ multipass shell server
 sysctl -n hw.logicalcpu
 
 # Adding CPU cores, memory & disk
-multipass set local.server.cpus=4
-multipass set local.server.memory=4G
-multipass set local.server.disk=128G
+multipass set local.k3s-server.cpus=4
+multipass set local.k3s-server.memory=4G
+multipass set local.k3s-server.disk=128G
 ```
 
 Server connectivity was verified under the following network configuration: the client address was 192.168.1.11, the multipass host (Mac Mini) address was 192.168.1.137, and the multipass server instance address was 192.168.1.2.

@@ -1,9 +1,15 @@
 .PHONY: chmod-scripts
 
-install-multipass-macos: 
+install-multipass-macos:
 	curl -fL -o multipass.pkg https://canonical.com/multipass/download/macos
 	sudo installer -pkg multipass.pkg -target /
 	rm multipass.pkg
+
+create-bridged-network:
+	INTERFACE=$(INTERFACE) ./scripts/multipass/create-bridged-network.sh
+
+create-k3s-server-instance:
+	NAME=$(NAME) IMAGE=$(IMAGE) CPUS=$(CPUS) MEMORY=$(MEMORY) DISK=$(DISK) ./scripts/multipass/create-k3s-server-instance.sh
 
 chmod-scripts:
 	sudo chmod -R +x scripts
